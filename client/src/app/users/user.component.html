@@ -1,0 +1,32 @@
+<h1>Usuarios</h1>
+
+<!-- <p *ngIf="loading$ | async"><em>Loading...</em></p>  -->
+
+<p>
+  <a [routerLink]="['register']">Create New</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Usuario</th>
+      <th>Email</th>
+      <th>Sexo</th>
+      <th>Activo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.userName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.genero === 1 ? "M" : "F" }}</td>
+      <td>{{ user.isActive ? "SI" : "NO" }}</td>
+      <td>
+        <a routerLink="/users/{{ user.id }}">Edit</a> |
+        <a [routerLink]="" (click)="delete(user.id)">Desactivar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
